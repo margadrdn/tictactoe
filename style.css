@@ -34,12 +34,11 @@
     display: grid;
     grid-template-columns: auto auto auto;
     grid-template-rows: auto auto auto;
-    max-width: 336px;
-
+    max-width: 306px;
+    background-color: white;
 }
 
 .tile {
-    border: 1px solid white;
     min-width: 100px;
     min-height: 100px;
     display: flex;
@@ -47,15 +46,66 @@
     align-items: center;
     font-size: 50px;
     cursor: pointer;
-    margin: 5px;
-    border-radius: 5px;
+    background-color: #12181B;
+    position: relative;
 }
 
-.playerX {
+.tileTop {
+    margin-bottom: 3px;
+}
+
+.tileBottom {
+    margin-top: 3px;
+}
+
+.tileLeft {
+    margin-right: 3px;
+}
+
+.tileRight {
+    margin-left: 3px;
+}
+
+.playerX::before,
+.playerX::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 100px;
+    background-color: white;
+}
+
+.playerX::before {
+    transform: rotate(45deg);
+}
+.playerX::after{
+    transform: rotate(-45deg);
+}
+
+.playerO::before,
+.playerO::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+
+.playerO::before{
+    width: 80px;
+    height: 80px;
+    background-color: white;
+}
+
+.playerO::after {
+    width: 60px;
+    height: 60px;
+    background-color: #12181B;
+}
+
+.playerXcolor {
     color: #09C372;
 }
 
-.playerO {
+.playerOcolor {
     color: #498AFB;
 }
 

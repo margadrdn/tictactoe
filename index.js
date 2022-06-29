@@ -50,12 +50,12 @@ window.addEventListener('DOMContentLoaded', () => {
         switch(result){
             case "X":
                 announcerDisplay.classList.remove('hide');
-                announcerDisplay.innerHTML = 'Player <span class="playerX">X</span> won!';
+                announcerDisplay.innerHTML = 'Player <span class="playerXcolor">X</span> won!';
                 break;
             
             case "O":
                 announcerDisplay.classList.remove('hide');
-                announcerDisplay.innerHTML = 'Player <span class="playerO">O</span> won!';
+                announcerDisplay.innerHTML = 'Player <span class="playerOcolor">O</span> won!';
                 break;
                 
             case "tie":
@@ -76,7 +76,7 @@ window.addEventListener('DOMContentLoaded', () => {
     function userAction(tile, index){
         if (isValidAction(tile) && isGameActive) {
             tile.innerHTML = currentPlayer;
-            tile.classList.add(`player${currentPlayer}`);
+            tile.classList.add(`player${currentPlayer}color`);
             board[index] = currentPlayer;
             gameLogic();
             changePlayer();
@@ -84,17 +84,17 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     function changePlayer(){
-        playerDisplay.classList.remove(`player${currentPlayer}`);
+        playerDisplay.classList.remove(`player${currentPlayer}color`);
         currentPlayer = (currentPlayer === "X") ? "O":"X";
         playerDisplay.innerHTML = currentPlayer;
-        playerDisplay.classList.add(`player${currentPlayer}`);
+        playerDisplay.classList.add(`player${currentPlayer}color`);
     }
 
     function resetBoard(){
         tiles.forEach(tile => {
             tile.innerHTML = ' ';
-            tile.classList.remove('playerX');
-            tile.classList.remove('playerO');
+            tile.classList.remove('playerXcolor');
+            tile.classList.remove('playerOcolor');
         });
         board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
         isGameActive = true;
