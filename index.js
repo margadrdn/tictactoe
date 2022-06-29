@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const tiles = Array.from(document.querySelectorAll('.tile'));
     const resetButton = document.querySelector('#reset');
     const playerDisplay = document.querySelector('.display-player');
-    const announcer = document.querySelector('.announcer');
+    const announcerDisplay = document.querySelector('.announcer');
 
     let currentPlayer = "X";
     let isGameActive = true;
@@ -21,7 +21,7 @@ window.addEventListener('DOMContentLoaded', () => {
     ];
 
     function gameLogic(){
-        let winner = false;
+        let roundWon = false;
         for (let i = 0; i <= 7; i++) {
             const a = board[winConditions[i][0]];
             const b = board[winConditions[i][1]];
@@ -29,24 +29,39 @@ window.addEventListener('DOMContentLoaded', () => {
 
             if (a === b && b === c && a !== ' ') {
                 isGameActive = false;
-                winner = true;
+                roundWon = true;
                 switch(a){
                     case "X":
-                        announcer.classList.remove('hide');
-                        announcer.innerHTML = 'Player <span class="playerX">X</span> won!';
+                        announcer('X');
                         break;
-                    
                     case "O":
-                        announcer.classList.remove('hide');
-                        announcer.innerHTML = 'Player <span class="playerO">O</span> won!';
+                        announcer('O');
                         break;
                 }
             }
         }
 
-        if (!board.includes(' ') && !winner){
-            announcer.classList.remove('hide');
-            announcer.innerHTML = 'Tie!';
+        if (!board.includes(' ') && !roundWon){
+            announcer('tie');
+        }
+    }
+
+    function announcer(result){
+        switch(result){
+            case "X":
+                announcerDisplay.classList.remove('hide');
+                announcerDisplay.innerHTML = 'Player <span class="playerX">X</span> won!';
+                break;
+            
+            case "O":
+                announcerDisplay.classList.remove('hide');
+                announcerDisplay.innerHTML = 'Player <span class="playerO">O</span> won!';
+                break;
+                
+            case "tie":
+                announcerDisplay.classList.remove('hide');
+                announcerDisplay.innerHTML = 'Tie!';
+                break;
         }
     }
 
@@ -83,7 +98,7 @@ window.addEventListener('DOMContentLoaded', () => {
         });
         board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
         isGameActive = true;
-        announcer.classList.add('hide');
+        announcerDisplay.classList.add('hide');
         if (currentPlayer = "O") {
             changePlayer();
         }
