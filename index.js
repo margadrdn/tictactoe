@@ -66,7 +66,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     function isValidAction(tile){
-        if (tile.innerHTML == "X" || tile.innerHTML == "O"){
+        if (tile.classList.contains('playerX') || tile.classList.contains('playerO')){
             return false;
         }else{
             return true;
@@ -75,8 +75,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function userAction(tile, index){
         if (isValidAction(tile) && isGameActive) {
-            tile.innerHTML = currentPlayer;
-            tile.classList.add(`player${currentPlayer}color`);
+            tile.classList.add(`player${currentPlayer}`);
             board[index] = currentPlayer;
             gameLogic();
             changePlayer();
@@ -92,9 +91,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function resetBoard(){
         tiles.forEach(tile => {
-            tile.innerHTML = ' ';
-            tile.classList.remove('playerXcolor');
-            tile.classList.remove('playerOcolor');
+            tile.classList.remove('playerX');
+            tile.classList.remove('playerO');
         });
         board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
         isGameActive = true;

@@ -1,7 +1,7 @@
 * {
     padding: 0;
     margin: 0;
-    font-family: 'Itim', cursive;
+    font-family: 'Patrick Hand', cursive;
 }
 
 .background {
@@ -70,9 +70,9 @@
 .playerX::after {
     content: '';
     position: absolute;
-    width: 10px;
-    height: 100px;
-    background-color: white;
+    width: 8px;
+    height: 85px;
+    background-color: rgb(102, 215, 246);
 }
 
 .playerX::before {
@@ -80,6 +80,10 @@
 }
 .playerX::after{
     transform: rotate(-45deg);
+}
+
+.playerXcolor {
+    color: rgb(102, 215, 246);
 }
 
 .playerO::before,
@@ -90,9 +94,9 @@
 }
 
 .playerO::before{
-    width: 80px;
-    height: 80px;
-    background-color: white;
+    width: 76px;
+    height: 76px;
+    background-color: rgb(78, 212, 116);
 }
 
 .playerO::after {
@@ -101,14 +105,9 @@
     background-color: #12181B;
 }
 
-.playerXcolor {
-    color: #09C372;
-}
-
 .playerOcolor {
-    color: #498AFB;
+    color: rgb(78, 212, 116);
 }
-
 .controls {
     display: flex;
     flex-direction: row;
