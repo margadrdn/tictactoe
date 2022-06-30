@@ -1,8 +1,8 @@
 window.addEventListener('DOMContentLoaded', () => {
     const tiles = Array.from(document.querySelectorAll('.tile'));
     const resetButton = document.querySelector('#reset');
-    const playerDisplay = document.querySelector('.display-player');
-    const announcerDisplay = document.querySelector('.announcer');
+    const display = document.querySelector('.display');
+    const displayPlayer = document.querySelector('.display-player');
 
     let currentPlayer = "X";
     let isGameActive = true;
@@ -49,18 +49,15 @@ window.addEventListener('DOMContentLoaded', () => {
     function announcer(result){
         switch(result){
             case "X":
-                announcerDisplay.classList.remove('hide');
-                announcerDisplay.innerHTML = 'Player <span class="playerXcolor">X</span> won!';
+                display.innerHTML = 'Player <span class="playerXcolor">X</span> won!';
                 break;
             
             case "O":
-                announcerDisplay.classList.remove('hide');
-                announcerDisplay.innerHTML = 'Player <span class="playerOcolor">O</span> won!';
+                display.innerHTML = 'Player <span class="playerOcolor">O</span> won!';
                 break;
                 
             case "tie":
-                announcerDisplay.classList.remove('hide');
-                announcerDisplay.innerHTML = 'Tie!';
+                display.innerHTML = 'Tie!';
                 break;
         }
     }
@@ -78,16 +75,15 @@ window.addEventListener('DOMContentLoaded', () => {
             tile.classList.remove(`player${currentPlayer}opacity`);
             tile.classList.add(`player${currentPlayer}`);
             board[index] = currentPlayer;
-            gameLogic();
             changePlayer();
+            gameLogic();
         }
     }
 
     function changePlayer(){
-        playerDisplay.classList.remove(`player${currentPlayer}color`);
+        display.innerHTML = `Player <span class="display-player player${currentPlayer}color">${currentPlayer}</span>\'s turn`
         currentPlayer = (currentPlayer === "X") ? "O":"X";
-        playerDisplay.innerHTML = currentPlayer;
-        playerDisplay.classList.add(`player${currentPlayer}color`);
+        display.innerHTML = `Player <span class="display-player player${currentPlayer}color">${currentPlayer}</span>\'s turn`
     }
 
     function resetBoard(){
@@ -97,7 +93,7 @@ window.addEventListener('DOMContentLoaded', () => {
         });
         board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
         isGameActive = true;
-        announcerDisplay.classList.add('hide');
+        display.innerHTML = 'Player <span class="display-player playerXcolor">X</span>\'s turn';
         if (currentPlayer = "O") {
             changePlayer();
         }
