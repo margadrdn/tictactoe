@@ -86,6 +86,22 @@
     color: rgb(102, 215, 246);
 }
 
+.playerXopacity::before,
+.playerXopacity::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 85px;
+    background-color: rgb(47, 103, 119);
+}
+
+.playerXopacity::before {
+    transform: rotate(45deg);
+}
+.playerXopacity::after{
+    transform: rotate(-45deg);
+}
+
 .playerO::before,
 .playerO::after {
     content: '';
@@ -104,6 +120,26 @@
     height: 60px;
     background-color: #12181B;
 }
+
+.playerOopacity::before,
+.playerOopacity::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+
+.playerOopacity::before{
+    width: 76px;
+    height: 76px;
+    background-color: rgb(37, 99, 54);
+}
+
+.playerOopacity::after {
+    width: 60px;
+    height: 60px;
+    background-color: #12181B;
+}
+
 
 .playerOcolor {
     color: rgb(78, 212, 116);

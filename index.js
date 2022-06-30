@@ -75,6 +75,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function userAction(tile, index){
         if (isValidAction(tile) && isGameActive) {
+            tile.classList.remove(`player${currentPlayer}opacity`);
             tile.classList.add(`player${currentPlayer}`);
             board[index] = currentPlayer;
             gameLogic();
@@ -102,8 +103,21 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function opacityMouseOver(tile){
+        if (isValidAction(tile)){
+            tile.classList.add(`player${currentPlayer}opacity`);
+        }
+    }
+    function opacityMouseOut(tile){
+        if (isValidAction(tile)){
+            tile.classList.remove(`player${currentPlayer}opacity`);
+        }
+    }
+
     tiles.forEach((tile, index) => {
+        tile.addEventListener('mouseover', () => opacityMouseOver(tile));
         tile.addEventListener('click', () => userAction(tile, index));
+        tile.addEventListener('mouseout', () => opacityMouseOut(tile));
     });
 
     resetButton.addEventListener('click', () => resetBoard());
