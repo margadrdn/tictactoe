@@ -1,3 +1,3 @@
 # tictactoe
 
-this is a learning project
+This was a simple tictactoe learning project I did in high school.
